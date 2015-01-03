@@ -1,5 +1,8 @@
 package mdettlaff.szkolenie.selenium;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,5 +49,7 @@ public class Szkolenie {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(goToCheckoutLinkLocator));
 		WebElement goToCheckoutLink = driver.findElement(goToCheckoutLinkLocator);
 		goToCheckoutLink.click();
+		WebElement totalElement = driver.findElement(By.className("yourtotal"));
+		assertThat(totalElement.getText().startsWith("Sub-Total:"), is(true));
 	}
 }
