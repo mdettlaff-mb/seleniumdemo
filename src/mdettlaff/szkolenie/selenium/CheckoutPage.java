@@ -1,19 +1,19 @@
 package mdettlaff.szkolenie.selenium;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class CheckoutPage {
+public class CheckoutPage extends PageObject {
 
-	private final WebDriver driver;
+	@FindBy(className = "yourtotal")
+	private WebElement total;
 
 	public CheckoutPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	public String getSummary() {
-		WebElement totalElement = driver.findElement(By.className("yourtotal"));
-		return totalElement.getText();
+		return total.getText();
 	}
 }

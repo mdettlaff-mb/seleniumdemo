@@ -4,12 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SearchResultsPage {
-
-	private final WebDriver driver;
+public class SearchResultsPage extends PageObject {
 
 	public SearchResultsPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 
 	public ProductDetailsPage selectResult(String resultName) {
