@@ -28,7 +28,9 @@ public class StoreTest {
 
 	@After
 	public void tearDown() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	@Test
