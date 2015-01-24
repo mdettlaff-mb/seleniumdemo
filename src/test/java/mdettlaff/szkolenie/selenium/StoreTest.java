@@ -10,6 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class StoreTest {
 
@@ -21,7 +24,16 @@ public class StoreTest {
 
 	@Before
 	public void setUp() {
-		driver = new FirefoxDriver();
+		FirefoxProfile fp = new FirefoxProfile();
+		DesiredCapabilities dc = DesiredCapabilities.firefox();
+		dc.setCapability(FirefoxDriver.PROFILE, fp);
+		driver = new RemoteWebDriver(dc);
+
+//		ChromeOptions options = new ChromeOptions();
+//		DesiredCapabilities dc = DesiredCapabilities.chrome();
+//		dc.setCapability(ChromeOptions.CAPABILITY, options);
+//		driver = new RemoteWebDriver(dc);
+
 		driver.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 		homePage = new HomePage(driver);
 	}
